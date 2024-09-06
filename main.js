@@ -17,6 +17,9 @@ let mouseY = null;
 const persomImg = new Image();
 persomImg.src = 'images/enemy.png';
 
+const shipsImg = new Image();
+shipsImg.src = 'images/shipss.png';
+
 canvas.addEventListener('click', (e) => {
     mouseX = e.offsetX;
     mouseY = e.offsetY;
@@ -87,8 +90,15 @@ function drowing() {
         }
     }
     if (x < 0 || x > canvas.width || y < 0 || y > canvas.height) stepCount = 0;
-    ctx.fillRect(x, y, 50, 50);
-    ctx.drawImage(persomImg, x - 25, y - 25, 50, 50);
+  
+        const spriteWidth = 60;
+        const spriteHeight = 70;
+        const spriteX = 380;
+        const spriteY = 130;
+        ctx.drawImage(persomImg, spriteX, spriteY, spriteWidth, spriteHeight, x, y, spriteWidth, spriteHeight)
+        ctx.drawImage(shipsImg, 10, 10, 100, 100)
+        if (x === 100 && y === 100) drawImage(shipsImg, 10, 10, 100, 100)
+    
     timer = setTimeout(drowing, time)
 }
 
